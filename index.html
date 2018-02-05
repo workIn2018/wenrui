@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<!-- Required meta tags-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+		<META HTTP-EQUIV="expires" CONTENT="0">
+		<!-- Your app title -->
+		<title>文瑞APP</title>
+		<!-- Path to Framework7 iOS CSS theme styles-->
+		<link rel="stylesheet" href="css/framework7.ios.min.css">
+		<!-- Path to Framework7 iOS related color styles -->
+		<link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<!-- Path to your custom app styles-->
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+
+	<body>
+		<!-- Status bar overlay for full screen mode (PhoneGap) -->
+		<div class="statusbar-overlay"></div>
+		<!-- Views -->
+		<div class="views">
+			<!-- Your main view, should have "view-main" class -->
+			<div class="view view-main">
+				<div class="navbar hide">
+				    <div class="navbar-inner">
+				        <div class="left">
+				            <a href="#" class="back"><i class="icon-back"></i></a>
+				        </div>
+				        <div class="center">构建管理</div>
+				    </div>
+				</div>
+				<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+				<div class="pages navbar-through toolbar-through">
+					<!-- Page, "data-page" contains page name -->
+					<div data-page="index" class="page no-navbar">
+						<!-- Tabs wrapper, shoud have "tabs" class. Required element -->
+						<!-- Scrollable page content -->
+						<div class="page-content" style="padding-bottom: 50px;padding-top: 0;">
+							<div class="tabs-animated-wrap">
+								<div class="tabs">
+								<!-- First tab, should have "tab" class and unique id attribute -->
+								<!-- First tab is active by default - additional "active" class -->
+									<div class="tab active" id="tab1">
+										<div class="custom-top-toolbar-small">
+											<div class="scaner"><a href="javascript:void(0);"><i class="icon-goujiansaoma"></i></a></div>
+											<div class="custom-no-fun"><a href="javascript:void(0);"><i class="icon-gerenjihua"></i></a></div>
+											<div class="custom-no-fun"><a href="javascript:void(0);"><i class="icon-daibanrenwu"></i></a></div>
+											<div class="custom-no-fun"><a href="javascript:void(0);"><i class="icon-chuanyueguanli"></i></a></div>
+										</div>
+										<div class="custom-top-toolbar">
+											<!-- Search Bar -->
+										    <div class="custom-searchbar custom-upTool" style="text-align: center;">
+										    	<h2 class="custom-topic">文瑞建设项目管理系统</h2>
+										    	<div class="custom-more-fun">
+										    		<a href="#" data-popover=".popover-links" class="open-popover">
+												    	<i class="icon-web-icon"></i>
+												    	<span>切换</span>
+												    </a>
+												</div>
+										    </div>
+											<div class="custom-top-tools">
+												<table cellpadding="0" cellspacing="0" border="0" width="100%">
+													<tr>
+														<td width="25%" class="custom-no-fun scaner"><a href="javascript:void(0);"><i class="icon-goujiansaoma"></i><span>劳务分包</span></a></td>
+														<td width="25%" class="custom-no-fun"><a href="javascript:void(0);"><i class="icon-gerenjihua"></i><span>工作日志</span></a></td>
+														<td width="25%" class="custom-no-fun"><a href="javascript:void(0);"><i class="icon-daibanrenwu"></i><span>代办任务</span></a></td>
+														<td width="25%" class="custom-no-fun"><a href="javascript:void(0);"><i class="icon-chuanyueguanli"></i><span>传阅管理</span></a></td>
+													</tr>
+												</table>
+											</div>
+										</div>
+										<div class="custom-notification">
+											<div class="list-block">
+											  	<ul>
+													<li>
+														<a href="notice.html" class="item-link item-content">
+															<div class="item-inner">
+																<div class="item-media"><img src="img/notification.png" alt="" /></div>
+																<div class="item-title">集团公司刘可钟经理到崇水路调查</div>
+															</div>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="content-block tablet-inset">
+											<div class="content-block-inner">
+												<table class="custom-functionalArea" cellpadding="0" cellspacing="0" border="0" width="100%">
+													<tr>
+														<td width="25%"><a href="javascript:void(0);" data-url="shouwen/list.html"><label style="background-color: #F75C5D"><i class="icon-fawenguanli"></i></label><span>收文管理</span></a></td>
+														<td width="25%"><a href="javascript:void(0);" data-url="fawen/list.html"><label style="background-color: #F9BB32"><i class="icon-fawenguanli1"></i></label><span>发文管理</span></a></td>
+														<td width="25%" class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-gerenhangdongjihua"></i></label><span>我的任务</span></a></td>
+														<td width="25%" class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-falvfagui"></i></label><span>政策法规</span></a></td>
+													</tr>
+													<tr>
+														<td class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-gongchengjindu"></i></label><span>工程进度</span></a></td>
+														<td class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-shebeiguanli"></i></label><span>设备管理</span></a></td>
+														<td class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-hetong"></i></label><span>合同审批</span></a></td>
+														<td class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-xianchangquerendan"></i></label><span>现场确认单</span></a></td>
+													</tr>
+													<tr>
+														<td class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-kaoqin"></i></label><span>整改督办</span></a></td>
+														<td class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-yongcheguanli"></i></label><span>用车管理</span></a></td>
+														<td class="custom-no-fun"><a href="javascript:void(0);"><label><i class="icon-all"></i></label><span>全部</span></a></td>
+													</tr>
+												</table>
+											</div>
+										</div>
+										<a href="notice.html" class="item-link item-content"><div class="custom-picNews"><img src="img/picNews1.png" alt="" /></div></a>
+										<div class="custom-picNews"><img src="img/picNews2.png" alt="" /></div>
+									</div>
+									<!-- <div class="tab" id="tab2">
+										... Tab 2 content goes here ...
+									</div>
+									<div class="tab" id="tab3">
+										... Tab 3 content goes here ...
+									</div> -->
+								</div>
+							</div>							
+						</div> 
+						<!-- Bottom Toolbar-->
+						<div class="toolbar tabbar tabbar-labels">
+							<div class="toolbar-inner">
+								<a href="#tab1" class="tab-link active">
+									<label><i class="icon-shouye"></i></label>
+									<span class="tabbar-label">首页</span>
+								</a>
+								<a href="#tab2" class="tab-link">
+									<label><i class="icon-tongxunluweixuanzhong"></i></label>
+									<span class="tabbar-label">通讯录</span>
+								</a>
+								<a href="#tab3" class="tab-link">
+									<label><i class="icon-gerenxinxiweixuanzhong"></i></label>
+									<span class="tabbar-label">个人信息</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="popover popover-links">
+            <div class="popover-angle"></div>
+            <div class="popover-inner">
+                <div class="list-block">
+                    <ul id="projectlist">
+                        <!-- <li><a href="#" class="list-button item-link">文瑞建设项目管理系统</a></li>
+                        <li><a href="#" class="list-button item-link">文泰建设项目管理系统</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+		<script type="text/javascript" src="js/framework7.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="js/util.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
+
+</html>

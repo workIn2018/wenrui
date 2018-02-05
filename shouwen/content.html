@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>收文管理 </title>
+    </head>
+    <body>
+        <div class="statusbar-overlay"></div>
+        <div class="views">
+            <div class="view view-main">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left"><a href="#" class="link back"><i class="icon-back"></i></a></div>
+                        <div class="center" id="shouwenTitle" style="display: block">收文管理</div>
+                        <div class="right"><a href="#" data-popover=".popover-links" class="open-popover">更多</a></div>
+                    </div>
+                </div>
+                <div class="searchbar-overlay"></div>
+                <div class="pages navbar-through toolbar-through">
+                    <div data-page="shouwen-content" class="page shouwen-content">
+                        <div class="page-content has-btn">
+                            <div class="content-box">
+                                <div class="content-det no-title" id="shouwenContent" v-cloak>
+                                    <div class="type-icon">
+                                        <svg class="icon" aria-hidden="true" >
+                                            <use :xlink:href="iclass"></use>
+                                        </svg>
+                                    </div>
+                                    <table class="content-table" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td width="80">来文标题：</td>
+                                            <td>{{title}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>来文单位：</td>
+                                            <td>{{deptmentName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>收文编号：</td>
+                                            <td>{{docAcceptNum}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>来文种类：</td>
+                                            <td>{{acceptType}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>收文日期：</td>
+                                            <td>{{docAcceptTime}}</td>
+                                        </tr>
+                                    </table>
+                                    <template v-if="shouwenType==0">
+                                        <div class="opr-btn">
+                                            <ul>
+                                                <li><a href="banli.html">办理</a></li>
+                                                <li><a href="bohui.html">驳回</a></li>
+                                            </ul>
+                                        </div>
+                                    </template>
+                                    <template v-else-if="shouwenType==1 && isZhuihui">
+                                        <div class="opr-btn">
+                                            <ul>
+                                                <li><a href="zhuihui.html">追回</a></li>
+                                            </ul>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                            <div class="content-box" id="fileList" v-cloak>
+                                <div class="content-title">附件（{{num}}）</div>
+                                <div :class="detClass">
+                                    <div class="file-list">
+                                        <table class="file-table" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody v-for="list in lists">
+                                            <tr>
+                                                <td rowspan="2" width="30"><svg class="icon" aria-hidden="true" ><use :xlink:href="list.icon"></use></svg></td>
+                                                <td>{{list.title}}</td>
+                                                <td rowspan="2" width="40" align="right"><a href="" @click="downLoad(list.id)">下载</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{list.size}}</td>
+                                            </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-box no-title">
+                                <div class="content-det no-title">
+                                    <div class="record" id='record' v-cloak>
+                                        <span class="shix" v-if="max>0"></span>
+                                        <div class="proposer" v-for="(value,key) in listRecord" v-if="key<1">
+                                         <i class="yuanw"><span class="yuann"></span></i>
+                                         <p class="p1">
+                                         	<span class="s1">{{proposer(value.assigneeName)}}</span>
+                                         	<span class="s2" v-if="value.assigneeName!='admin'">{{value.activityName}}</span>
+	                                        <span class="s2">发起申请</span>
+	                                        <span class="s4">{{gtime(value.startTime)}}</span>
+                                         </p>
+                                        </div>
+                                        <div class="assess" v-for="(value,key) in listRecord" v-if="key>0">
+                                            <i class="yuanw"><span class="yuann"></span></i>
+                                            <p class="p1">
+                                                <span class="s1">{{proposer(value.assigneeName)}}</span>
+                                                <span class="s2">{{value.activityName}}</span>
+                                                <span class="s4" v-if="value.endTime!=null">{{gtime(value.endTime)}}</span>
+                                                <span class="s4" v-if="value.endTime==null">{{wait(value.startTime)}}</span>
+                                                <span :class="value.status +' s3'">{{switchText(value.status)}}</span>
+                                            </p>
+                                            <p class="p2" v-if='value.comment!=""'>
+                                                <span class="p2-1">审批意见：</span>
+                                                <span class="p2-2">{{value.comment}}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="popover popover-links" style="width:160px">
+                                <div class="popover-angle"></div>
+                                <div class="popover-inner">
+                                    <div class="list-block">
+                                        <ul>
+                                            <li><a href="record.html" class="list-button item-link">驳回记录查看</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

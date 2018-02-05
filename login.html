@@ -1,0 +1,166 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录页</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link type="text/css" href="css/css.css" rel="stylesheet">
+    <style>
+		*{margin:0;padding:0;list-style:none;}
+		html, body{width: 100%;height: 100%;}
+		a, input, select, textarea{outline: 0;}
+		.page{box-sizing: border-box;position: absolute;left: 0;top: 0;width: 100%;height: 100%;background: #efeff4;-webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
+		.login{position:absolute;background:white;padding:0 10%;width:85%;height:210px;top:41%;left:50%;transform:translate(-50%,0);z-index:100;box-sizing: border-box;box-shadow: 0px 0px 15px #bbb;border-radius: 10px;}
+		.sek{height:500%;width:500%;}
+		.login-t{transition: all 0.5s;height: 55%;width: 100%;position: relative;overflow: hidden;background: url(img/login-bg.png) no-repeat 0 0;background-size: 100% 100%;}
+		.login-t .login-title{position: absolute;width: 85%;left: 10%;top: 30%;}
+		.login-t .login-title h1, .login-t .login-title h2{font-weight: normal;color: #fff;margin: 0;padding: 5px 0;}
+		.login-t .login-title h1{font-size: 30px;}
+		.login-t .login-title h2{font-size: 26px;}
+		.logo{height:44%;z-index:10;position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);transition:all 0.5s}
+		.login label{font-size:17px;color:gray;position:absolute;bottom:2px;left:2%;pointer-events: none;transition: all 0.5s;}
+		.login input{margin-bottom: 0;border-radius: 0;height: 25px;box-shadow: none;font-size:17px;box-sizing: border-box;padding:2px 15% 2px 2%;border-width:0 0 1px 0;border-style: solid;border-color: #999999;width:100%;}
+		.login img{position:absolute;}
+		.name{width:12px;height:14px;}
+		.pwd{width:14px;height:9px;}
+		.login>button{width:72%;height:50px;position:absolute;left:50%;bottom:0px;transform: translate(-50%,50%);border-radius:25px;background:#40A9FF;border:none;font-size:17px;color:white;outline: none;letter-spacing: 20px;text-indent: 20px;text-align: center;}
+		.div-box{position:relative;margin-top:40px;}
+		.div-box>img{position:absolute;right:5%;bottom:8px;}
+		.messages{color:red;padding: 10px 5px;font-size: 12px;}
+    </style>
+</head>
+<body>
+<div id="aside_container">
+</div>
+<div id="section_container">
+    <section id="login_section" class="active">
+        <div class="login-t">
+	        <div class="login-title">
+	        	<h2>欢迎来到</h2>
+	        	<h1>龙丽温动态管理系统</h1>
+	        </div>
+	    </div>
+        <div class="indented">
+            <form id="loginForm" method="post">
+                <div class="login">
+			        <div class="div-box">
+			            <label>输入用户名</label>
+			            <input id="username" type="text" name="userName" class="input_text" />
+			            <img src="img/name.png" alt="" class="name"/>
+			        </div>
+			        <div class="div-box">
+			            <label>输入密码</label>
+			            <input id="password" type="password" name="passWord" class="upwd input_text" onkeyup="this.value=this.value.replace(/[^\w_]/g,'');"/>
+			            <img src="img/b.png" alt="" class="pwd"/>
+			        </div>
+			        <div class="div-box" id="validateCodeDiv" style="margin-top: 20px;display:none;">
+		                <div class="input-row">
+		                    <sys:validateCode name="validateCode" inputCssStyle="margin-bottom:0;width:60%;height:32px;border:1px #999 solid;font-weight:normal;"
+		                    imageCssStyle="padding-top:3px;padding-left:calc(20% - 35px);" />
+		                </div>
+		            </div>
+		            <input type="hidden" name="mobileLogin" value="true">
+		            <button id="btn">登录</button>
+			    </div>
+            </form>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+var sessionid = '${not empty fns:getPrincipal() ? fns:getPrincipal().sessionid : ""}';
+$(function(){
+	console.info(localStorage.getItem("username"))
+	if (localStorage.getItem("username") != '' && localStorage.getItem("username") != null){
+		tips('您已登录，正在跳转...', function(){
+			window.location.href = 'index.html';
+		});
+        /*var targetHash = location.hash;
+        if (targetHash == '#login_section'){
+    		J.showToast('您已登录，正在跳转...', 'success');
+    		window.location.href = 'index.html';
+        }*/
+	}else{
+		$('#login_article').addClass('active');
+	}
+	$('.div-box>input.input_text').each(function(){
+		if($(this).val() != '') {
+			$(this).prev().css({
+				bottom: '25px',
+				fontSize: '13px'
+			});
+		}
+	});
+	$('.pwd').click(function() {
+		var e = $('.upwd');
+		if(e.attr('type') == 'password') {
+			e.attr('type', 'text');
+			e.next().attr('src', 'img/mm.png');
+		} else {
+			e.attr('type', 'password');
+			e.next().attr('src', 'img/b.png');
+		}
+	})
+	$('.div-box>input').focus(function() {
+		var e = $(this);
+		e.prev().css({
+			bottom: '25px',
+			fontSize: '13px'
+		});
+	})
+	$('.div-box>input').blur(function() {
+		var e = $(this);
+		if(e.val() == '') {
+			e.prev().css({
+				bottom: '2px',
+				fontSize: '17px'
+			});
+		}
+	});
+	
+	$("#loginForm").submit(function(){
+		if ($('#username').val() == ''){
+			tips('请填写账号');
+			//J.showToast('请填写账号', 'info');
+		}else if ($('#password').val() == ''){
+			tips('请填写密码');
+			//J.showToast('请填写密码', 'info');
+		}else if ($('#validateCodeDiv').is(':visible') && $('#validateCode').val() == ''){
+			tips('请填写验证码');
+			//J.showToast('请填写验证码', 'info');
+		}else{
+			$.ajax({
+				"method": "post",
+				"url": "http://192.168.10.124:8085/Kingee/app/common/singleLogin",
+				"data": $("#loginForm").serialize(),
+				"dataType": "jsonp",
+             	//"jsonp": "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+             	//"jsonpCallback":"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+				"success": function(data){
+					console.info(data.data)
+					var data = data.data;
+					if (data.length > 0){
+						localStorage.setItem('username', $('#username').val());
+						localStorage.setItem('password', $('#password').val());
+						localStorage.setItem('projectlist', JSON.stringify(data));
+						tips('登录成功！', function(){
+							window.location.href = 'index.html';
+						});
+					}else{
+						localStorage.setItem('username', '');
+						localStorage.setItem('password', '');
+						tips('用户名或密码错误');
+						/*if (data.shiroLoginFailure == 'org.apache.shiro.authc.AuthenticationException'){
+							$('#validateCodeDiv').show();
+						}
+						$('#validateCodeDiv a').click();*/
+					}
+				}
+			});
+		}
+		return false;
+	});
+});
+</script>
+</body>
+</html>

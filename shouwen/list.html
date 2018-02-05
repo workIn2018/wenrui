@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>收文管理 </title>
+        <link rel="stylesheet" href="../css/framework7.ios.min.css">
+        <link rel="stylesheet" href="../css/framework7.ios.colors.min.css">
+        <link rel="stylesheet" href="../css/iconfont.css">
+        <link rel="stylesheet" href="../css/css.css">
+        <link rel="stylesheet" href="../css/record1.css" />
+        <script src="../fonts/iconfont.js"></script>
+    </head>
+    <body>
+        <div class="statusbar-overlay"></div>
+        <div class="views">
+            <div class="view view-main">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left"><a href="#" class="link" id="back"><i class="icon-back"></i></a></div>
+                        <div class="center">收文管理</div>
+                        <div class="right"></div>
+                    </div>
+                </div>
+                <div class="searchbar-overlay"></div>
+                <div class="pages navbar-through">
+                    <div data-page="shouwen" class="page">
+                        <div class="page-content ">
+                            <div class="buttons-row">
+                                <a href="#tab0" class="tab-link tab0 active button">待办</a>
+                                <a href="#tab1" class="tab-link tab1 button">在办</a>
+                                <a href="#tab2" class="tab-link tab2 button">终审</a>
+                            </div>
+                            <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init" id="listSearch">
+                                <div class="searchbar-input">
+                                    <input type="search" placeholder="搜索标题、正文内容"><a href="#" class="searchbar-clear"></a>
+                                </div><a href="#" class="searchbar-cancel">取消</a>
+                            </form>
+                            <div class="tabs-animated-wrap">
+                            <div class="tabs">
+                                <div class="tab active" id="tab0">
+                                    <div class="title-list infinite-scroll">
+                                        <ul></ul>
+                                        <div class="infinite-scroll-preloader">
+                                            <div class="preloader"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab" id="tab1">
+                                    <div class="title-list infinite-scroll">
+                                        <ul></ul>
+                                        <div class="infinite-scroll-preloader">
+                                            <div class="preloader"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab" id="tab2">
+                                    <div class="title-list infinite-scroll">
+                                        <ul></ul>
+                                        <div class="infinite-scroll-preloader">
+                                            <div class="preloader"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+        <script type="text/javascript" src="../js/vue.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/shouwen.js"></script>
+    </body>
+
+</html>

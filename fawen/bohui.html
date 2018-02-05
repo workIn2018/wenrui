@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>审批意见</title>
+    </head>
+    <body>
+        <div class="statusbar-overlay"></div>
+        <div class="views">
+            <div class="view view-main">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left"><a href="#" class="link back"><i class="icon-back"></i></a></div>
+                        <div class="center">审批意见</div>
+                    </div>
+                </div>
+                <div class="searchbar-overlay"></div>
+                <div class="pages navbar-through toolbar-through">
+                    <div data-page="bohui" class="page">
+                        <div class="page-content has-btn">
+                            <div class="content-box">
+                                <div class="content-title">
+                                <!-- <a href="#" class="used open-popover" data-popover=".popover-used">常用意见</a> -->
+                                <span class="red-font">*</span> 办理意见</div>
+                                <div class="content-det">
+                                    <textarea placeholder="请输入拒绝理由" id="bohuiCon"></textarea>
+                                </div>
+                            </div>
+                            <div class="opr-btn">
+                                <ul>
+                                    <li onclick="bohui()">确认驳回</li>
+                                </ul>
+                            </div>
+                            <!-- <div class="popover popover-used">
+                                <div class="popover-angle"></div>
+                                <div class="popover-inner">
+                                    <div class="list-block" id="bohuiUsed">
+                                        <ul>
+                                            <li class="list-button item-link" @click="checkUsed(message)" v-for="message in messages">{{message}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

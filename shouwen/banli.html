@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>收文管理 </title>
+    </head>
+    <body>
+        <div class="statusbar-overlay"></div>
+        <div class="views">
+            <div class="view view-main">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left"><a href="#" class="link back"><i class="icon-back"></i></a></div>
+                        <div class="center">审批意见</div>
+                    </div>
+                </div>
+                <div class="searchbar-overlay"></div>
+                <div class="pages navbar-through toolbar-through">
+                    <div data-page="banli" class="page page-banli">
+                        <div class="page-content has-btn">
+                            <div class="content-box">
+                                <div class="content-title on-left">流转方式</div>
+                                <div class="content-right">
+                                    <label><input type="radio" value="true" name="process" checked="checked" onchange="getTache(true)"><i></i>下一步</label>
+                                    <label><input type="radio" value="false" name="process" onchange="getTache(false)"><i></i>返回上一环节</label>
+                                </div>
+                            </div>
+                            <div class="content-box">
+                                <div class="content-title on-left"><span class="red-font">*</span> 流程环节</div>
+                                <div class="content-right" id="tache" v-cloak>
+                                    <ul>
+                                        <li v-for="(list,index) in lists"><label>
+                                            <input type="radio" name="tache" :value="list.taskDefKey" v-if="index==0" checked="checked" @change="checked(list.variables)">
+                                            <input type="radio" name="tache" :value="list.taskDefKey" v-else @change="checked(list.variables)">
+                                            <i></i>{{list.name}}</label>
+                                        </li>
+                                        <!-- <li><label><input type="radio" name="tache"><i></i>流程2</label></li>
+                                        <li><label><input type="radio" name="tache"><i></i>流程3</label></li>
+                                        <li><label><input type="radio" name="tache"><i></i>流程4</label></li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="content-box">
+                                <div class="content-title"><a href="#" class="used open-popover" data-popover=".popover-used">常用意见</a><span class="red-font">*</span> 办理意见</div>
+                                <div class="content-det">
+                                    <textarea id="banliCon" placeholder="请输入同意理由"></textarea>
+                                </div>
+                            </div>
+                            <div class="content-box" id="sendPerson">
+                                <div class="content-title"><span class="red-font">*</span> 流程发送人员<em>(点击头像删除)</em></div>
+                                <div class="content-det">
+                                    <ul class="nameBox" id="add-name">
+                                        <li v-for="(tem,index) in listName" @click="Remove(index)">
+                                        <div class="tuoy">
+                                            <span hidden>{{tem.userId}}</span>
+                                            <span>{{tem.userName.slice(-2)}}</span>
+                                        </div>
+                                        <p>{{tem.userName}}</p>
+                                        </li>
+                                        <a href="lxr.html"><li class="add">
+                                            <div class="tuoy">
+                                                <span></span><span></span>
+                                            </div>
+                                            <p>添加成员</p>
+                                        </li></a>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="opr-btn">
+                                <ul>
+                                    <li onclick="banli()">确认办理</li>
+                                </ul>
+                            </div>
+                            <div class="popover popover-used">
+                                <div class="popover-angle"></div>
+                                <div class="popover-inner">
+                                    <div class="list-block" id="banliUsed">
+                                        <ul>
+                                            <li class="list-button item-link" @click="checkUsed(message)" v-for="message in messages">{{message}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
